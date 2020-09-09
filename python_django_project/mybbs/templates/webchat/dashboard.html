@@ -1,0 +1,350 @@
+{% extends 'base.html' %}
+
+{% block page-container %}
+<div class="chat-container">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        60%
+      </div>
+    </div>
+    <div class="left-contact-panel">
+        contacts
+        <div>
+
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#contact-tab"  role="tab" data-toggle="tab">好友</a>
+            </li>
+            <li role="presentation">
+                <a href="#group-tab"  role="tab" data-toggle="tab">群组</a>
+            </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="contact-tab">
+               <ul class="list-group">
+                {% for friend in request.user.userprofile.friends.select_related %}
+                    <li contact-type="single" contact-id="{{ friend.id }}" onclick="OpenChatWindow(this)" class="list-group-item">
+                        <span class="badge hide">0</span>
+                        <span class="contact-name"> {{ friend.name }} </span>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="group-tab">
+                <ul class="list-group">
+                {% for group in request.user.userprofile.group_members.select_related %}
+                    <li contact-type="group" contact-id="{{ group.id }}" onclick="OpenChatWindow(this)" class="list-group-item">
+                        <span class="badge hide">0</span>
+                        <span class="contact-name"> {{ group.name }} </span>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+    </div>
+    <div class="right-chat-panel">
+        <div class="chat-box-title" contact-type="" contact-id="">
+            title
+        </div>
+        <div class="chat-box-window">
+            window
+        </div>
+        <div class="chat-box-emoj">
+            <!-- 添加上传按钮 -->
+            <div class="col-md-3">
+                <input id="file_upload" type="file">
+            </div>
+            <div class="col-md-2">
+                <span class="glyphicon glyphicon-upload" onclick="FileUpload()"></span>
+            </div>
+        </div>
+        <div class="chat-box-msg-box">
+            <textarea id="msg"></textarea>
+            <button class="btn btn-success">发送消息</button>
+        </div>
+    </div>
+    <div class="clear-both"></div>
+</div>
+
+{% endblock %}
+
+{% block bottom-js %}
+<script>
+//for csrf
+// using jQuery
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+console.log(csrftoken)
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+
+//end csrf
+
+
+GLOBAL_CHAT_RECORD_DIC = {
+    'single': {},
+    'group': {},
+}
+
+
+    $(document).ready(function(){
+        //set csrf before send ajax
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+        //end set csrf
+
+        //定时取消息
+        /*var MsgRefresher = setInterval(function(){
+
+            GetNewMsgs();
+        },3000);
+        */
+        //end定时取沙
+
+        GetNewMsgs();//开始去取消息
+
+
+        $("#navbar a[href='{{ request.path }}']").parent().addClass("active");
+
+        //  send msg
+        // 监听回车发送消息
+        //当整个页面只有一个textarea
+        $("body").delegate("textarea", "keydown",function(e){
+            if(e.which == 13) {  // Enter key down  按下 enter键 触发事件
+                //  send msg button clicked
+                var msg_text = $("textarea").val();  //获取到消息内容
+                if ($.trim(msg_text).length > 0){
+                    console.log(msg_text);
+                    SendMsg(msg_text);
+                }
+                // no wait the send_msg's call confirm msg
+                AddSentMsgIntoBox(msg_text);   //发送消息
+                $("textarea").val('');  //清空输入框
+            }
+        });
+    });//end doc ready
+
+
+    function SendMsg(msg_text){
+        var contact_type = $(".chat-box-title").attr("contact-type");
+        var contact_id = $(".chat-box-title").attr("contact-id");
+        if (contact_type && contact_id){
+           var msg_item ={
+                    'from': "{{ request.user.userprofile.id }}",
+                    'from_name': "{{ request.user.userprofile.name }}",
+                    'to'  :contact_id,
+                    'type':contact_type,
+                    'msg' : msg_text,
+                }
+
+            $.post("{% url 'send_msg' %}", {data:JSON.stringify(msg_item)},function(callback){
+
+                console.log(callback);
+            });//end post
+        }//end if
+
+    }
+    
+    function GetFileUploadProgress(file_obj) {
+        var UploadProgressRefresh = setInterval(function (callback) {
+            $.getJSON("{% url 'file_upload_progress' %}", {filename:file_obj.name},function (callback) {
+                console.log("upload progress ......" + callback);
+                if(file_obj.size == callback.recv_size){
+                    // upload done
+                    clearInterval(UploadProgressRefresh);
+                    AddSentMsgIntoBox(file_obj.name, 'image')
+                    $.get("{% url 'delete_cache_key' %}", {cache_key:file_obj.name}, function (callback) {
+                        console.log(callback);
+                    })
+                }
+                var current_persent = (callback.recv_size/file_obj.size)*100 + "%";
+                $(".progress-bar").css("width",current_persent);
+                $(".progress-bar").text(current_persent);
+            })
+        }, 1000);
+    }
+
+    // ajax post文件
+    function FileUpload() {
+        var formData = new FormData();  // form table
+        console.log($('#file_upload')[0].files[0]);
+        formData.append('file',$('#file_upload')[0].files[0]);
+
+        $.ajax({
+            url:"{% url 'file_upload' %}",
+            type: 'POST',
+            data: formData,
+            processData:false,  // 告诉jQuery不要处理数据,true的话就是要压缩
+            contentType:false,  // 告诉jQuery不要设置sontentType
+            success:function (data) {
+                console.log(data);
+                console.log("23232323232323");
+            }
+        }); // end ajax
+        GetFileUploadProgress($('#file_upload')[0].files[0]);
+    }
+
+    //  信息 展示到windows中
+    function AddSentMsgIntoBox(msg_text,msg_type){
+        if(msg_type == 'text'){
+            var new_msg_ele = "<div class='msg-item'>" +
+                    "<span>" + "{{ request.user.userprofile.name }}"  + "</span>" +
+                    "<span>"  + new Date().toLocaleTimeString() +"</span>" +
+                    "<div class='msg-text'>" + msg_text +"</div>" +
+                  "</div>"; //用户名+日期+消息内容
+        } else if(msg_type.startsWith('image')){    // 发送图片
+            var new_msg_ele = "<div class='msg-item'>" +
+                "<span>" + "{{ request.user.userprofile.name }}" + "</span>" +
+                "<span>" + new Date().toLocaleDateString() + "</span>" +
+                "<div class='msg-text'><img width='500px' src= '/statics/" +
+                "{{ request.user.userprofile.id }}/" + msg_text + "'/></div>" +
+                "</div>"; //用户名+日期+消息内容
+        } else {
+             var new_msg_ele = "<div class='msg-item'>" +
+                "<span>" + "{{ request.user.userprofile.name }}" + "</span>" +
+                "<span>" + new Date().toLocaleDateString() + "</span>" +
+                "<div class='msg-text'><a href='/statics/" +
+                "{{ request.user.userprofile.id }}/" + msg_text + "' target='_bank'/>点开看看</a></div>" +
+                "</div>"; //用户名+日期+消息内容
+        }
+
+
+        $(".chat-box-window").append(new_msg_ele);     //找到chat-box-window添加消息内容
+
+        // 聊天windows滑轮自动下滑
+        $('.chat-box-window').animate({
+            scrollTop: $('.chat-box-window')[0].scrollHeight}, 500);
+
+    }
+
+    function OpenChatWindow(ele){
+        console.log($(ele));
+
+        $(ele).addClass("active");
+        $(ele).siblings().removeClass("active");  //去掉多重亮显
+        var contact_id = $(ele).attr("contact-id");  //联系人id
+        var contact_name = $(ele).find(".contact-name").text(); //获取用户名
+        var contact_type = $(ele).attr("contact-type");  //联系人类型，组还是个人
+
+        // 在切换之前把当前的聊天记录归档
+        var current_session_id = $(".chat-box-title").attr("contact-id");
+        var current_session_type = $(".chat-box-title").attr("contact-type");
+        if (current_session_id){  // has session
+            //do switch
+            GLOBAL_CHAT_RECORD_DIC[current_session_type][current_session_id] = $(".chat-box-window").html()
+        }
+
+        var chat_box_title_content = "正在跟" +contact_name +"聊天";
+        $(".chat-box-title").html(chat_box_title_content);
+        $(".chat-box-title").attr("contact-id",contact_id);
+        $(".chat-box-title").attr("contact-type",contact_type);
+
+        // 获取新内容
+        var new_contact_chat_record = GLOBAL_CHAT_RECORD_DIC[contact_type][contact_id];
+        // 如果是第一次从字典取值
+        if (typeof new_contact_chat_record == 'undefined'){
+            new_contact_chat_record = '';
+        }
+        // 将内容赋予到对话框
+        $(".chat-box-window").html(new_contact_chat_record)
+
+        //消息接收完毕后，隐藏提醒信息
+        var contact_ele = $(".list-group li[contact-type='"+ contact_type +"']").filter("li[contact-id='"+ contact_id +"']");
+        $(contact_ele).find(".badge").text(0);
+        $(contact_ele).find(".badge").addClass("hide");
+
+    }
+
+    // 配置回调递归
+    function GetNewMsgs(){
+        console.log('-----getting new msgs-------');
+        $.getJSON("{% url 'get_new_msgs' %}",function(callback){
+            console.log(callback);
+            ParseNewMsgs(callback);  // 把新消息进行解析
+            GetNewMsgs();
+        });//end post
+    }
+
+    // 把新消息进行解析 打印到window上  消息定义
+    function ParseNewMsgs(callback) {
+        var current_session_type = $(".chat-box-title").attr("contact-type");
+        var current_session_id = $(".chat-box-title").attr("contact-id");
+        for (var i in callback){
+            console.log(callback[i]);
+            // 判断来源是个人还是群组
+            if(callback[i].type == 'single'){
+                var msg_from_contact_id = callback[i]['from_name'];
+            } else {   // 如果是group
+                var msg_from_contact_id = callback[i]['to'];
+            }
+
+            //  消息格式 {from: "1", to: "5", type: "single", msg: "↵dsfsdf", timestamp: 1599529716.719906}
+            var msg_item_ele = "<div class='msg-item'>" +
+                    "<span>" + msg_from_contact_id + "</span>" +
+                    "<span>"  + callback[i].timestamp +"</span>" +
+                    "<div class='msg-text'>" +callback[i].msg +"</div>" +
+                  "</div>";
+
+            if (callback[i].from ==  current_session_id && current_session_type == callback[i].type){
+                // 此消息的发送方当前正在跟我聊天
+                $(".chat-box-window").append(msg_item_ele);
+            }else {
+                // 此消息发送者当前没有打开聊天框，消息暂存内存
+                if (GLOBAL_CHAT_RECORD_DIC[callback[i].type][msg_from_contact_id]){
+                    GLOBAL_CHAT_RECORD_DIC[callback[i].type][msg_from_contact_id] += msg_item_ele;
+                }else {
+                    GLOBAL_CHAT_RECORD_DIC[callback[i].type][msg_from_contact_id] = msg_item_ele;
+                } // end if
+
+                // 新消息提醒
+                //var contact_ele = $(".list-group li[contact-type='single']").filter("li[contact-id='3']")[0];
+                var contact_ele = $(".list-group li[contact-type='"+ callback[i].type +"']").filter("li[contact-id='"+ msg_from_contact_id +"']")[0];
+                var current_new_msg_num = $(contact_ele).find(".badge").text();
+                $(contact_ele).find(".badge").removeClass("hide");
+                var ckl = $(contact_ele).find(".badge").text(parseInt(current_new_msg_num)+1);
+
+
+
+
+
+            } // end for
+        }
+    }
+
+
+</script>
+{% endblock %}

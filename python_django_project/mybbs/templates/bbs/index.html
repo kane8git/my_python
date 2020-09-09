@@ -1,0 +1,73 @@
+
+{% extends 'base.html' %}
+{% load custom %}
+
+{% block page-container %}
+    <div class="wrap-left">
+        <div class="new-article-notify hide" >
+            <a href="{{ request.path }}">有<span></span>条新消息</a>
+        </div>
+        {% for article in article_list reversed %}
+            <div article_id="{{ article.id }}" class=" article-box row">
+                <div class="article-head-img col-md-4">
+                    <img src="/statics/{{ article.head_img|truncate_url}}" class="article-head-img"/>
+                </div>
+                <div class="article-brief col-md-8">
+                    <a class="article-title" href="{% url 'article_detail' article.id%}">{{ article.title }}</a>
+                    <div class="article-brief-info">
+                        <span>{{ article.author.name }}</span>
+                        <span>{{ article.pub_date }}</span>
+                        <span>{% filter_comment article as comments %}</span>
+                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                        {{ comments.comment_count }}
+                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                        {{ comments.thumb_count }}
+                    </div>
+                    <div class="article-brief-text">
+                        <span >{{ article.brief }}</span>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+    <div class="wrap-right">
+        fsdfsdfsdf
+    </div>
+    <div class="clear-both"></div>
+
+{% endblock %}
+
+
+{% block  bottom-js %}
+    <script>
+        $(document).ready(function () {
+
+
+        var new_article_refresh = setInterval(function(){
+            var latest_article_id = $( $(".wrap-left").children()[1] ).attr("article_id");
+            $.getJSON("{% url 'get_latest_article_count' %}",{latest_id:latest_article_id},function(callback){
+                console.log(callback);
+
+                if (callback.new_article_count >0){
+
+                    //$(".new-article-notify").toggleClass("hide");
+                    if ($(".new-article-notify").hasClass("hide")){
+                        $(".new-article-notify").removeClass("hide");
+                    }
+                    $(".new-article-notify span").html(callback.new_article_count );
+                }//end if callback.new_article_count >0
+
+            });//end get
+            //console.log(latest_article_id);
+
+        },3000);//end setInterval
+    });//end doc ready
+    </script>
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://v3.bootcss.com/examples/navbar-fixed-top/ -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+
+    <title>mybbs</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/statics/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/statics/bootstrap/css/navbar-fixed-top.css" rel="stylesheet">
+    <!-- 自己写的样式 -->
+    <link href="/statics/bootstrap/css/custom.css" rel="stylesheet">
+
+  </head>
+
+  <body> {% csrf_token %}
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">mybbs</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            {% block top-menu %}
+          <ul class="nav navbar-nav">
+          {% for category in category_list %}
+            {% if category.id == category_obj.id  %}
+                <li class="active"><a href="/bbs/category/{{ category.id }}">{{ category.name }}</a></li>
+            {% else %}
+                <li class=""><a href="/bbs/category/{{ category.id }}">{{ category.name }}</a></li>
+            {% endif %}
+          {% endfor %}
+            <li class=""><a href={% url 'chat_dashboard' %}>聊天专区</a></li>
+          </ul>
+            {% endblock %}
+          <ul class="nav navbar-nav navbar-right">
+            {% if request.user.is_authenticated %}
+                <li class=""><a href="#">{{ request.user.userprofile.name }}</a></li>
+                <li class=""><a href="{% url 'logout' %}">注销</a></li>
+            {% else %}
+                <li class=""><a href="{% url 'login' %}">登录/注册</a></li>
+            {% endif %}
+            <li class=""><a href="{% url 'new-article' %}">发帖</a></li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="page-container">
+    {% block page-container %}
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h2>your own stuff</h2>
+      </div>
+    {% endblock %}
+    </div> <!-- /container -->
+
+    <footer class="footer">
+        sdfdsfdsf
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/statics/bootstrap/js/jquery-2.1.4.js"></script>
+    <script src="/statics/bootstrap/js/bootstrap.min.js"></script>
+
+
+
+    {% block bottom-js %}
+
+    {% endblock %}
+
+
+
+
+
+
+</body></html>
