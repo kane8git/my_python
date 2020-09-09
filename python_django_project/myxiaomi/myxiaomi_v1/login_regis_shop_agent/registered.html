@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /*顶部菜单*/
+        .top-meun{
+            background-color: #DDDDDD;
+        }
+        .top-one{
+            margin: 0 auto;
+            width: 960px;
+            height: 32px;
+        }
+        .top-meun a{
+            display: inline-block;
+            line-height: 32px;
+            font-size: 14px;
+            padding-right: 15px;
+            text-decoration: none;
+            color: dimgray;
+        }
+        .top-meun-left{
+            float: left;
+        }
+        .top-meun-right{
+            float: right;
+        }
+        /* logo 框*/
+        .logo{
+            padding-top: 18px;
+            margin: 0 auto;
+            width: 960px;
+            height: 80px;
+        }
+        /*外边大框*/
+        .oustd{
+            margin: 0 auto;
+            width: 960px;
+        }
+        /*注册框*/
+        .rest{
+            border: 5px solid #dddddd;
+            top: 150px;
+            width: 960px;
+            height: 600px;
+        }
+        /*左边*/
+        h2{
+            margin-top:10px;
+        }
+        .rest_left{
+            padding-left: 50px;
+            position: relative;
+            width: 550px;
+            height: 600px;
+            border-right: 1px solid blueviolet;
+            float: left;
+        }
+        .rest_left input{
+            width: 220px;
+            height: 30px;
+            padding-right: 35px;
+        }
+        span{
+            color: red;
+        }
+        .users{
+            margin-top: 55px;
+            padding-top: 5px;
+            clear: both;
+        }
+        .users_u{
+            margin: 70px 10px;
+        }
+        .users_user{
+            position: relative;
+            float: left;
+            width: 300px;
+        }
+        .sp{
+            display: inline-block;
+            line-height: 30px;
+            width: 100px;
+            float: left;
+        }
+        .sp-1{
+            height: 30px;
+            width: 100px;
+        }
+        .sp label{
+            float: right;
+        }
+
+        /*验证码*/
+
+        #yzm{
+            float: left;
+            width: 70px;
+            height: 30px;
+        }
+        #img-yzm a{
+            float: left;
+            width: 70px;
+            height: 30px;
+            background-image: url("img/view.png");
+            background-position-x: -25px;
+            background-position-y: 5px;
+            margin: 0 0;
+            padding: 0 0;
+        }
+        .auto_left{
+            float: left;
+            font-size: 12px;
+            padding-right: 15px;
+        }
+        #check_left{
+            display: inline;
+            width: 15px;
+            height: 15px;
+        }
+        #auto_logo{
+            color: black;
+        }
+        #logoing, .rest-q{
+            background-color: red;
+            width: 200px;
+            text-align: center;
+            display: inline-block;
+            line-height: 30px;
+        }
+
+        /*清除浮动*/
+        .div_float{
+            clear: both;
+        }
+
+        #logoing a,.rest-q a{
+            text-decoration: none;
+            color: white;
+        }
+
+       /*右边*/
+        .rest_right{
+            float: right;
+            width: 350px;
+            height: 600px;
+            text-align: center;
+        }
+        .ld-div{
+            margin-top: 50px;
+        }
+        .ld-div span{
+            color: black;
+        }
+        .img-right{
+            margin-top: 50px;
+            width: 200px;
+            border: 0;
+        }
+
+
+
+    </style>
+</head>
+
+<body style="margin: 0;">
+    <!--顶部菜单-->
+    <div class="top-meun">
+        <div class="top-one">
+            <div class="top-meun-left">
+                <a href="3">收藏本站</a>
+            </div>
+            <dev class="top-meun-right">
+                <a href="login.html" target="_blank">登录</a>
+                <a href="registered.html">免费注册</a>
+                <a href="#">我的订单</a>
+                <a href="#">VIP会员俱乐部</a>
+                <a href="#">客户服务</a>
+            </dev>
+        </div>
+        <div class="div_float"></div>
+
+    </div>
+
+    <div class="logo"><a href="#"><img src="img/logo.png" /></a></div>
+
+    <div class="oustd">
+        <!-- 注册框-->
+        <div class="rest">
+            <!--左边-->
+            <div class="rest_left">
+                <div class="users">
+                    <h2>注册新用户</h2>
+                </div>
+
+                <div class="users">
+                    <div class="sp">
+                        <label><span>*</span>用户名：</label>
+                    </div>
+                    <div class="users_user">
+                        <input type="text" name="" id="" value="" />
+                        <samp id="img-user"></samp>
+                    </div>
+                </div>
+
+                <div class="users">
+                    <div class="sp">
+                        <label><span>*</span>手机号：</label>
+                    </div>
+                    <div class="users_user">
+                        <input type="text" name="" id="" value="" />
+                        <samp id="img-user"></samp>
+                    </div>
+                </div>
+
+                <div class="users">
+                    <div class="sp">
+                        <label><span>*</span>登录密码：</label>
+                    </div>
+                    <div class="users_user">
+                        <input type="text" name="" id="" value="" />
+                        <samp id="img-pwd"></samp>
+                    </div>
+                </div>
+
+                <div class="users">
+                    <div class="sp">
+                        <label><span>*</span>确认密码：</label>
+                    </div>
+                    <div class="users_user">
+                        <input type="text" name="" id="" value="" />
+                        <samp id="img-pwd"></samp>
+                    </div>
+                </div>
+
+                <div class="users">
+                    <div class="sp">
+                        <label><span>*</span>验证码：</label>
+                    </div>
+                    <div class="users_user">
+                        <input type="text" name="" id="yzm" value="" />
+                        <samp id="img-yzm"></samp>
+                    </div>
+                </div>
+
+                <div class="users">
+                    <div class="sp sp-1">
+                    </div>
+                    <div class="users_user">
+                        <input type="checkbox" name="" class="auto_left" id="check_left" value="" />
+                        <span class="auto_left" id="auto_logo">我已阅读并同意</span>
+                        <a href="#" class="auto_left"><<用户注册协议>></a>
+                    </div>
+                </div>
+
+                <div class="users">
+                    <div class="sp sp-1">
+                    </div>
+                    <div class="users_user" id="logoing"><a href="#">同意以上协议并注册</a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- 右边-->
+            <div class="rest_right">
+                <div class="ld-div">
+                    <span id="dl">
+                        我已经注册，现在就
+                    </span>
+                    <a href="login.html" target="_blank">d登录</a>
+                </div>
+                <img src="img/right.jpeg" class="img-right" alt="这是一张风景画" title="好看么？" />
+            </div>
+
+
+        </div>
+            <div class="div_float"></div>
+
+    </div>
+
+
+
+</body>
+</html>

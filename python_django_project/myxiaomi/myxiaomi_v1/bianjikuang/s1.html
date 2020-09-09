@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑框功能</title>
+
+    <style type="text/css">
+        /* 顶部菜单*/
+        .pag-head{
+            position: fixed;
+            z-index: 7;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            width: 100%;
+            background: #005EA7;
+        }
+        .meun_top{
+            height: 48px;
+            line-height: 48px;
+            width: 960px;
+            margin: 0 auto;
+        }
+        .meuns_top{
+            text-decoration: none;
+            color: white;
+            padding: 0px 10px 0px 10px;
+        }
+        .meuns_top:hover{
+            background-color: rgba(64,119,203,0.6);
+        }
+        .clear_div{
+            clear: both;
+        }
+        /*顶部菜单结束*/
+
+        /*下方大框*/
+        .pag-cent{
+            margin-top: 50px;
+        }
+
+        /*左侧菜单*/
+        .left-meun{
+            z-index: 8;
+            position: fixed;
+            top: 50px;
+            left: 55px;
+        }
+        .meuns{
+            background-color: #005EA7;
+            height: 45px;
+            width: 150px;
+            color: white;
+            line-height: 45px;
+            text-align: center;
+        }
+        .meuns:hover{
+            background-color: rgba(64,119,203,0.6);
+        }
+        .hide{
+            display: none;
+        }
+        .content{
+            margin-left: 65%;
+        }
+        .item{
+            width: 150px;
+        }
+        /*左侧菜单结束*/
+
+        /*下方右边内容块*/
+        .big-content{
+            height: 1000px;
+            border: 1px solid green;
+        }
+        .content_right{
+            margin: 0 auto;
+            height: 800px;
+            width: 960px;
+            border: 1px solid blueviolet;
+        }
+        .hosts{
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+        table{
+            border-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        /*遮罩层*/
+        .c1{
+            position: fixed;
+            z-index: 9;
+            /*打开多层样式 fixed模式 定义层级为9 */
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            /*上面表示全覆盖*/
+            background-color: black;
+            /*上面为背景色 黑色 下面为透明度为 50*/
+            opacity: 0.5;
+        }
+        .c2{
+            position: fixed;
+            z-index: 10;
+            /*打开多层样式 fixed模式 定义层级为10 */
+            width: 400px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -150px;
+            background-color: white;
+        }
+        .z-z{
+            width: 230px;
+            height: 120px;
+            margin-top: 90px;
+            margin-left: 90px;
+        }
+        .error{
+            color: red;
+        }
+        hr{
+            width: 230px;
+        }
+        #cre{
+            margin-left: 70px;
+        }
+        .heds{
+            /*默认不显示*/
+            display: none;
+        }
+        .right-menu{
+            width: 320px;
+            height: 30px;
+            line-height: 30px;
+        }
+        .edits{
+            float: right;
+            border: 1px solid darkgray;
+            padding: 2px;
+            background-color: #A9A9A9;
+            font-size: 9px;
+        }
+        .edits-2{
+            background-color: orange;
+        }
+        .option-ol{
+
+        }
+        /*下方右边内容块结束*/
+
+        /*返回顶部*/
+        .pg-top{
+            width: 68px;
+            height: 48px;
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            background-image: url("img/top.png");
+            background-position: -425px -270px;
+        }
+
+    </style>
+</head>
+<body style="margin: 0">
+    <!-- 顶部菜单-->
+    <div class="pag-head">
+        <div class="meun_top">
+            <a href="" class="meuns_top">顶部菜单一</a>
+            <a href="" class="meuns_top">顶部菜单二</a>
+            <a href="" class="meuns_top">顶部菜单三</a>
+            <a href="" class="meuns_top">顶部菜单四</a>
+            <a href="" class="meuns_top">顶部菜单五</a>
+            <a href="" class="meuns_top">顶部菜单六</a>
+        </div>
+        <div class="clear_div">
+
+        </div>
+
+    </div>
+
+    <!--    下方大框-->
+    <div class="pag-cent">
+        <!--        左边菜单-->
+        <div class="left-meun">
+            <div class="item">
+                <div id="i1" class="meuns">菜单1</div>
+                    <div class="content">
+                        <div>内容1</div>
+                        <div>内容1</div>
+                        <div>内容1</div>
+                        <div>内容1</div>
+                    </div>
+            </div>
+
+            <div class="item">
+                <div id="i2" class="meuns">菜单2</div>
+                    <div class="content hide">
+                        <div>内容2</div>
+                        <div>内容2</div>
+                        <div>内容2</div>
+                        <div>内容2</div>
+                    </div>
+            </div>
+
+            <div class="item">
+                <div id="i3" class="meuns">菜单3</div>
+                    <div class="content hide">
+                        <div>内容3</div>
+                        <div>内容3</div>
+                        <div>内容3</div>
+                        <div>内容3</div>
+                    </div>
+            </div>
+
+            <div class="item">
+                <div id="i4" class="meuns">菜单4</div>
+                    <div class="content hide">
+                        <div>内容4</div>
+                        <div>内容4</div>
+                        <div>内容4</div>
+                        <div>内容4</div>
+                    </div>
+            </div>
+
+        </div>
+
+        <!--右边内容-->
+        <div class="big-content">
+            <div class="content_right">
+                <div class="hosts">
+                    <div class="right-menu">
+                        <input type="button" id="add" value="添加">
+                        <input type="button" id="all" value="全选">
+                        <input type="button" id="remov" value="取消">
+                        <input type="button" id="rest" value="反选">
+                        <div class="edits" id="ed" name="none">
+                            点击：进入编辑模式
+                        </div>
+                    </div>
+
+                    <table border="1" id="tab">
+                        <thead>
+                            <tr>
+                                <th>选择</th>
+                                <th>主机</th>
+                                <th>端口</th>
+                                <th>ip</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tb">
+                            <tr>
+                                <td><input type="checkbox" as="true"></td>
+                                <td tag="hostname">主机一</td>
+                                <td tag="port">1000</td>
+                                <td tag="ip">10.10.12.1</td>
+                                    <td tag="olin">
+                                        <select name="ol" class="heds">
+                                            <option value="在线">在线</option>
+                                            <option value="在线">下线</option>
+                                        </select>
+                                        <a>在线</a>
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" as="true"></td>
+                                <td tag="hostname">主机二</td>
+                                <td tag="port">1000</td>
+                                <td tag="ip">10.10.12.2</td>
+                                    <td tag="olin">
+                                        <select name="ol" class="heds">
+                                            <option value="在线">在线</option>
+                                            <option value="在线">下线</option>
+                                        </select>
+                                        <a>下线</a>
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" as="true"></td>
+                                <td tag="hostname">主机三</td>
+                                <td tag="port">1000</td>
+                                <td tag="ip">10.10.12.3</td>
+                                    <td tag="olin">
+                                        <select name="ol" class="heds">
+                                            <option value="在线">在线</option>
+                                            <option value="在线">下线</option>
+                                        </select>
+                                        <a>下线</a>
+                                    </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 遮罩层-->
+            <div class="c1 heds" id="z-cent"></div>
+            <!--对话框-->
+            <div class="c2 heds" id="z-first">
+                <form class="z-z">
+                    <label>主机：</label>
+                    <input type="text" name="hostname" id="hosts" value=""><br /><br />
+                    <label>端口：</label>
+                    <input type="text" name="prot" id="prots" value=""><br /><br />
+                    <label>IP：</label>
+                    <input type="text" name="ip" id="ips" value=""><br />
+                    <hr />
+                    <input type="button" name="" id="cre" value="确定">
+                    <input type="button" id="gb" value="关闭">
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="pa-top" onclick="topy();"></div>
+
+    <script src="jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <script type="text/javascript">
+
+        //单个勾选
+        $('#tb tr td').delegate('input[type="checkbox"]','click',function () {
+            console.log($(this).prop('checked'));
+            if($('#ed').attr('as')&& $(this).prop('checked')){
+                edi_a(this);
+            }else if($('#ed').attr('as') && $(this).prop('checked') == false){
+                edi_b(this);
+            }
+        })
+
+        //进入函数
+        function edi_a(self) {
+            $(self).attr('as','false'); //设置是否编辑状态
+            $(self).parent().nextUntil('[tag="olin"]').each(function () {
+                // 父级的所有兄弟 查找属性有tag的
+                var v = $(this).text(); //获取内容
+                $(this).empty(); //清空内容
+                var new_v = $(this).append("<input type='text' value='" +v+"'>");//添加内容
+            })
+            var s = $(self).parent().nextAll('[tag="olin"]').children(); //找到下拉菜单标签
+            s.each(function () {
+                $(this).removeClass('heds'); //移除样式
+                $(this).next().remove(); //清空内容
+            })
+        }
+
+        //退出函数
+        function edi_b (self) {
+            $(self).attr('as','true');//设置是否编辑状态
+            $(self).parent().nextUntil('[tag="olin"]').each(function  () {
+                // 父级    的所有兄弟                查找     属性有 tag  的
+                //$(this).attr('as','true');
+                var v=$(this).find('input').val();//获取内容
+                $(this).find('input').remove('input');//    移除        标签
+                $(this).text(v);
+            })
+            var s=$(self).parent().nextAll('[tag="olin"]').children();//找到下拉菜单标签
+            s.each(function () {
+                $(this).addClass('heds');//添加样式
+                var ol=$(this).val();//获取值
+                var n='<a>'+ol+'</a>';
+                $(this).after(n);
+            })
+        }
+
+
+        //编辑模式判断
+        $('.right-menu').delegate('.edits','click',function () {
+            if ($(this).hasClass('edits-2')){
+                $(this).removeClass('edits-2'); //移除样式
+                $(this).text('点击：进入编辑模式'); //改变内容
+                $(this).removeAttr('as'); //移除属性
+                editlistz();
+            }else{
+                $(this).addClass('edits-2'); //添加样式
+                $(this).text('点击：退出编辑模式'); //改变内容
+                $(this).attr('as','disp'); //添加属性
+                editlist(); //编辑框函数
+            }
+        })
+
+        //退出编辑框函数
+        function editlistz() {
+            $('#tb tr').find('input[type="checkbox"]').each(function () { //获取表单内容 列表
+                if ($(this).prop('checked')){ //判断是否打勾
+                    edi_b(this);
+                }
+            })
+        }
+
+        //进入编辑框函数
+        function editlist() {
+            $('#tb tr').find('input[type="checkbox"]').each(function () {
+                if ($(this).prop('checked')){
+                    edi_a(this);
+                }
+            })
+        }
+
+        //批量上下线
+        $('#tb tr td').delegate('select[name="ol"]','click',function () {
+            $(this).keydown(function (event) {
+                if(event.keyCode==17 && $(this).mousedown()){
+                    var ol=$(this).val(); //获取值
+                    var m=$(this).parent().parent().siblings();
+                    //父级的父级的所有兄弟
+                    //console.log(m);
+                    m.each(function () {
+                        //子级
+                        if ($(this).find('input[as="false"]').prop('checked')){ //找到子级是有选上的
+                            ($(this).children().find('name=ol').val(ol)); //进行赋值
+                        }
+                    })
+                    return false;
+                }
+            })
+        })
+
+        //左侧菜单js 点击函数
+        $('.meuns').click(function () {
+            //当前点击的标签
+            $(this).next().removeClass('hide'); //找到下一个标签 移除样式
+            $(this).parent().siblings().find('.content').addClass('hide'); //获取父级，的同级所有兄弟标签，查找其所有下级的类名，添加样式
+        })
+
+        //返回顶部
+        function topy() {
+            document.body.scrollTop=0;
+        }
+
+        //显示对话框
+        $('#gb').click(function () {
+            $('#z-cent,#z-first').removeClass('heds'); //移除类名 样式
+            $('.z-z input[type="text"]').val('');
+        })
+
+        //关闭对话框
+        $('#gb').click(function () {
+            $('#z-cent,#z-first').addClass('heds'); //添加 类名 样式
+        })
+
+        //添加主机 IP
+        $('#cre').click(function () {
+            var flag=true; //默认提交
+            $('.error').remove(); //事先移除 提交标签
+            $('.z-z').find('input[type="text"]').each(function () { //查找 type=text 的input 循环判断
+                var v=$(this).val(); //当前标签的值
+                if (v.length<=0){
+                    flag=false; //改为不能提交
+                    var tag=document.createElement('span'); //创建一个标签
+                    tag.className='error'; //添加一个类名
+                    tag.innerHTML='不能为空';
+                    $(this).after(tag);
+                }
+            })
+            if(flag==true){
+                var host=$('#hosts').val(); //主机名
+                var port=$('#ports').val(); //端口
+                var ip=$('#ips').val(); //ip
+                var tab=$('#tab'); //获取页面表格
+                var newtr='<tr><td><i:nput type="checkbox" as="true"></td><td>'+host+'</td><td>'+port+'</td><td>'+ip+'</td><td tag="olin"><select name="ol" class="heds"><option value="在线">在线</option><option value="下线">下线</option></select><a>在线</a></td></tr>';
+                $(tab).append(newtr);
+                $('#z-cent,#z-first').addClass('heds'); //添加 类名 样式
+            }
+        })
+
+        //全选
+        $('#all').click(function () {
+            $(':checkbox').prop('checked',true).each(function () {
+                if ($('#ed').attr('as') && $(this).attr('as') == 'true' ){ //判断是否是编辑模式
+                    edi_a(this)
+                }
+            });
+        })
+
+        //取消
+        $('#remov').click(function () {
+            $(':checkbox').prop('checked',false).each(function () {
+                if ($('#ed').attr('as') && $(this).attr('as')=='false'){
+                    edi_b()
+                }
+            });
+        })
+
+        //反选
+        //通过 each循环 三元运算 操作 写法
+        $('#rest').click(function () {
+            $('#tb :checkbox').each(function () {
+                var v=$(this).prop('checked')?false:true; //获取值
+                $(this).prop("checked",v); //赋于checkbox
+                if (v==true){ //判断是否是勾选 勾选在进行判断
+                    if ($('#ed').attr('as') && $(this).attr('as')=='true'){ //如果是编辑模式 并且处于锁定状态
+                        edi_a(this); //进入编辑
+                    }
+                }else{
+                    if($('#ed').attr('as') && $(this).attr('as')=='false'){ //如果是编辑模式 并且处于非锁定状态
+                        edi_b(this); //退出编辑
+                    }
+                }
+            })
+        })
+
+
+    </script>
+
+
+
+
+
+
+</body>
+</html>

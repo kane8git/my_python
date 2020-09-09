@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        /* logo 框*/
+        .logo{
+            margin: 0 auto;
+            top: 50px;
+            left: 10px;
+            width: 960;
+            height: 80px;
+        }
+
+        /* 外边大框*/
+        .outstd{
+            margin: 0 auto;
+            width: 960px;
+        }
+        /*左边*/
+        .rest_left{
+            float: left;
+            width: 450px;
+            height: 400px;
+            text-align: center;
+
+        }
+        .rest_left a{
+            background-image: url("img/left.jpg");
+            background-repeat: no-repeat;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 315px;
+            width: 315px;
+            height: 315px;
+            margin-top: 45px;
+        }
+
+        /*右边*/
+        .rest_right{
+            position: relative;
+            width: 505px;
+            height: 400px;
+            float: right;
+        }
+        .rest_right input{
+            width: 260px;
+            height: 30px;
+            padding-right: 35px;
+        }
+        span{
+            color: red;
+        }
+        .users{
+            margin-top: 55px;
+            padding-top: 5px;
+            clear: both;
+        }
+        .users_u{
+            margin: 70px 10px;
+        }
+        .users_user{
+            position: relative;
+            float: left;
+            width: 300px;
+
+        }
+        .sp{
+            display: inline-block;
+            line-height: 30px;
+            width: 100px;
+            float: left;
+        }
+
+        .sp-1{
+            height: 30px;
+            width: 100px;
+        }
+
+        .sp label{
+            float: right;
+        }
+
+        /*输入框 小图标*/
+        #img-user,#img-pwd{
+            position:absolute;
+            background-image: url("img/user.jpg");
+            background-position: -86px -150px;
+            height: 25px;
+            width: 25px;
+            right: 5px;
+            top: 5px;
+            display: inline-block;
+        }
+
+        #img-pwd{
+            background-position: -275px -320px;
+        }
+
+        #yzm{
+            float: left;
+            width: 70px;
+            height: 30px;
+        }
+
+        #img-yzm a{
+            float: left;
+            width: 70px;
+            height: 30px;
+            background-image: url("img/view.png");
+            background-position-x: -25px;
+            background-position-y: 5px;
+            margin: 0 0;
+            padding: 0 0;
+        }
+
+        .auto_left{
+            float: left;
+            font-size: 12px;
+            padding-right: 15px;
+        }
+
+        #check_left{
+            display: inline;
+            width: 15px;
+            height: 15px;
+        }
+
+        #auto_logo{
+            color: black;
+        }
+
+        #logoing, .rest-q{
+            background-color: red;
+            width: 200px;
+            text-align: center;
+            display: inline-block;
+            line-height: 30px;
+        }
+
+        /*免费注册*/
+        .rest-q{
+            width: 100px;
+            height: 30px;
+            background-color: green;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        /**/
+        .div_float {
+            clear: both;
+        }
+
+        /*下方*/
+        .footer{
+            margin: 0 auto;
+            top: 560px;
+            width: 960px;
+            text-align: center;
+        }
+
+        #logoing a, .rest-q a {
+            text-decoration: none;
+            color: white;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+    <div class="logo"><a href="#"><img src="img/logo.png"/></a></div>
+
+    <div class="outstd">
+
+        <!-- 注册框-->
+        <div class="rest">
+            <!--左边-->
+            <div class="rest_left">
+                <a href="#"></a>
+            </div>
+            <!--右边-->
+            <div class="rest_right">
+                <div class="users">
+                    <div class="sp">
+                        <label><span>*</span>用户名：</label>
+                    </div>
+                    <div class="users_user">
+                        <input type="text" name="" id="" value="" />
+                        <samp id="img-user"></samp>
+                    </div>
+                </div>
+
+                <div class="users">
+                    <div class="sp">
+                        <label><span>*</span>密码：</label>
+                    </div>
+                    <div class="users_user">
+                        <input type="text" name="" id="" value="" />
+                        <samp id="img-pwd"></samp>
+                    </div>
+                </div>
+
+                <div class="users">
+                    <div class="sp">
+                        <label><span>*</span>验证码：</label>
+                    </div>
+                    <div class="users_user">
+                        <input type="text" name="" id="yzm" value="" />
+                        <samp id="img-yzm"></samp>
+                    </div>
+                </div>
+
+                <div class="users">
+                    <div class="sp sp-1"></div>
+                    <div class="users_user">
+                        <input type="checkbox" name="" class="auto_left" id="check_left" value="" />
+                        <span class="auto_left" id="auto_logo">自动登录</span>
+                        <a href="#" class="auto_left">忘记密码</a>
+                    </div>
+                </div>
+
+                <div class="users">
+                    <div class="sp sp-1"></div>
+                    <div class="users_user" id="logoing"><a href="#">登录</a></div>
+                </div>
+
+                <div class="rest-q"><a href="registered.html" target="_blank">免费注册</a> </div>
+
+
+            </div>
+
+            <div class="div_float"></div>
+        </div>
+
+    </div>
+
+    <!--下方-->
+    <footer class="footer">
+        <p>Copyright ©老男孩教育. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

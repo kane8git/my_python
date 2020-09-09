@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+        /*顶部菜单*/
+        .top{
+            background-color: #000000;
+            color: #DDDDDD;
+        }
+        .top-meun{
+            margin: 0 auto;
+            width: 1100px;
+            height: 32px;
+        }
+        .top-meun a,.top-meun span{
+            font-size: 12px;
+            display: inline-block;
+            line-height: 32px;
+            padding-right: 10px;
+        }
+        .top-meun-left{
+            float: left;
+        }
+        .top-meun-right{
+            float: right;
+        }
+        .top-meun-right span{
+            color: red;
+        }
+        /*a标签 去下划线*/
+        a {
+            text-decoration: none;
+            color: #DDDDDD;
+        }
+        /*返回顶部*/
+        .top-s{
+            position: fixed;
+            top: 160px;
+            right: 250px;
+            width: 60px;
+            height: 150px;
+            /*border: 1px solid darkred;*/
+        }
+
+        ul{
+            list-style-type: none;
+        }
+
+        #jcSide li a{
+            display: inline-block;
+            list-style-type: none;
+
+            background-color: #c41240;
+            width: 45px;
+            height: 45px;
+            margin-left: 5px;
+            margin-top: 5px;
+            text-align: center;
+
+        }
+        #jcSide li{
+
+            margin: 5px;
+            width: 55px;
+            height: 55px;
+            background-color:#c41240 ;
+        }
+        #jcSide li a:hover{
+            background-color: white;
+            color: #c41240;
+        }
+        #jcSide li span{
+            font-weight: bolder;
+        }
+        /*上方LOGO*/
+
+        .logo-big{
+            height: 93px;
+            background-image:url(img/v_index_bg.png) ;
+        }
+        .logo{
+            margin: 0 auto;
+            width: 1100px;
+            position: relative;
+        }
+        .logo-img,.search{
+            float: left;
+        }
+        .search{
+            position: absolute;
+            left: 185px;
+            top: 18px;
+            border: 1px solid red;
+            height: 45px;
+
+        }
+        .search select,#search-id{
+            display: inline-block;
+            line-height: 45px;
+            width: 100px;
+            height: 45px;
+            padding: 0 0 ;
+            margin: 0 0;
+        }
+        /*搜索框 */
+        #search-id{
+            width: 400px;
+            height: 41px;
+        }
+        .img-small{
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            height: 20px;
+            width: 20px;
+            background-image: url(img/sprite-photo-search.png);
+        }
+        .img-big{
+            background-color: #e20052;
+            position: absolute;
+            position: relative;
+            top: 18px;
+            left: 700px;
+            width: 47px;
+            height: 47px;
+        }
+
+        #a-img{
+            position: absolute;
+            background-image: url(img/v_hd_bg1.png);
+            top: 1px;
+            left: 14px;
+            background-position: 0px -60px;
+            background-repeat: no-repeat;
+            width: 50px;
+            height: 50px;
+        }
+        .hot{
+            font-size: 12px;
+            position: absolute;
+            top: 32px;
+            left: 758px;
+            color: #646363;
+        }
+        .hot a{
+            color: #474545;
+        }
+
+        /*中间菜单*/
+        .meun_centr{
+            background-color: #740d92;
+        }
+        .meun_centr-big{
+            margin: 0 auto;
+            width: 1100px;
+            height: 40px;
+        }
+        .meun_centr-big a{
+            display: inline-block;
+            line-height: 40px;
+            font-size: 13px;
+            font-weight: bolder;
+            padding:0 10px 0 10px ;
+            text-align: center;
+        }
+        .meun_centr-big a:hover{
+            background-color: #c41240;
+        }
+
+        .centr-left{
+            float: left;
+        }
+        .centr-right{
+            float: right;
+        }
+
+        /*中间菜单下方*/
+        .meun-down{
+            height: 15px;
+            background-color: #c41240;
+        }
+        /*中间内容*/
+        .content{
+
+            background-image: url(img/v_index_bg.png);
+        }
+        .cont-cent ,.footer-noe,.mag,.down{
+            margin: 0 auto;
+            width: 1100px;
+            /*border: 2px solid #740D92;*/
+        }
+
+
+        .cont-cent-left{
+            float: left;
+            width: 820px;
+            /*border: 1px dashed;*/
+        }
+        .new{
+            height: 82px;
+        }
+        .list-li, .list ul,.list{
+            margin: 0 0;
+            padding: 0 0;
+        }
+
+        .list-li{
+            margin: 0 0;
+            padding: 0 0;
+            width: 820px;
+            height: 230px;
+            background-color:gainsboro;
+
+        }
+        .list{
+            margin-bottom: 10px;
+        }
+        /*.list-li:hover{
+            border: 2px solid #C41240;
+        }*/
+        .a-big{
+            position: relative;
+            display: block;
+            width: 820px;
+            height: 230px;
+            background-color: black;
+        }
+        .a-big:hover{
+            border: 4px solid #C41240;
+            background-color: #C41240;
+        }
+
+        .shop_name,.time,.left_shadow{
+            position: absolute;
+        }
+        .shop_name{
+            display: inline-block;
+            line-height: 30px;
+            width: 230px;
+            bottom: 0px;
+            left: 0px;
+            color: white;
+            background-color: black;
+            font-size: 14px;
+            text-align: center;
+        }
+        .shop_name:hover{
+            background-color: #C41240;
+        }
+
+        .left_shadow{
+            left: 5px;
+            top: 5px;
+            text-align: center;
+        }
+
+        .time{
+            width: 590px;
+            height: 30px;
+            right: 0;
+            bottom: 0px;
+            background-color: white;
+            text-align: left;
+            line-height: 30px;
+            font-size: 12px;
+            color: #000000;
+        }
+        .sale{
+            display: inline-block;
+            width: 220px;
+            height: 20px;
+            background-color: white;
+            color: red;
+            font-size: 14px;
+            padding-top: 80px;
+
+        }
+        .shop_ad{
+            text-align: center;
+            margin: 0 auto;
+            font-size: 12px;
+            color: #696969;
+        }
+        /*右边内容*/
+        .cont-cent-right{
+            float: right;
+            width: 270px;
+            height: 960px;
+            /*border: 1px dashed;*/
+        }
+
+        .gif{
+            margin-top: 82px;
+            width: 220px;
+            height: 200px;
+        }
+
+
+        /*底部开始*/
+        .footer-noe-right{
+            float: right;
+            display: inline-block;
+            line-height: 76px;
+            height: 66px;
+            width: 235px;
+
+        }
+        .foot-span{
+            float: left;
+            display: inline-block;
+            height: 52px;
+            width: 138px;
+            /*margin-top: 15px;
+            margin-left: 15px;*/
+            margin: 15px 15px 15px 15px;
+        }
+        #footer-img-4{
+            background-image: url(img/footer_bg.png);
+        }
+        #footer-img-3{
+            background-image: url(img/footer_bg.png);
+            background-position-y: -52px;
+        }
+        #footer-img-2{
+            background-image: url(img/footer_bg.png);
+            background-position-y: -104px;
+        }
+        #footer-img-1{
+            background-image: url(img/footer_bg.png);
+            background-position-y: -156px;
+        }
+
+        footer{
+            border-top:3px solid red ;
+            background-color: #fafafa;
+            border-bottom: 1px solid #DCDCDC;
+        }
+
+        /*下方信息*/
+        .footer_sort{
+            margin-top: 30px;
+            width: 154px;
+            float: left;
+            text-align: center;
+        }
+        .f_title{
+            padding-left:23px ;
+            display: inline-block;
+            text-align: center;
+            width: 145px;
+        }
+        .f_title ul{
+            width: 145px;
+            text-align: left;
+            /*padding-left: 10px;*/
+            list-style: none;
+            margin: 0;
+        }
+        .f_title ul li{
+
+            line-height: 20px;
+            height: 20px;
+        }
+        .f_title ul li a{
+
+        }
+
+        .footer_sort a{
+            color: black;
+            font-size: 12px;
+        }
+
+        /*最下方底疗*/
+        .footer_nav a{
+            margin: 15px;
+        }
+        .footer_nav_box a, .footer_nav_box {
+            color: #8c8c8c;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .footer_nav_box .footer_nav {
+            text-align: center;
+            line-height: 20px;
+            padding-bottom: 17px;
+        }
+        .footer_nav_box .footer_copyright {
+            line-height: 20px;
+            text-align: center;
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        .footer_nav_box{
+            padding-bottom: 70px;
+        }
+
+        /*清除浮动*/
+        .div_float {
+            clear: both;
+        }
+        </style>
+    </head>
+    <body style="margin: 0;">
+        <!--上方菜单-->
+        <div class="top">
+            <div class="top-meun">
+                <div class="top-meun-left">
+                    <span>欢迎光临当当，</span>
+                    <a href="登陆页面.html">请登陆</a>
+                    <a href="注册页面.html">成为会员</a>
+                </div>
+                <div class="top-meun-right">
+                    <a href="#">购物车</a><span>0</span>
+                    <a href="#">我的订单</a>
+                    <a href="#">原创征文</a>
+                    <a href="#"><img src=""/>手机当当</a>
+                    <a href="#">我的当当</a>
+                    <a href="#">企业采购</a>
+                    <a href="#">客户服务</a>
+                </div>
+
+            </div>
+            <div class="div_float"></div>
+        </div>
+
+        <!--top返回顶部 -->
+        <div class="top-s">
+            <ul id="jcSide">
+              <li id="back_1"><a href="javascript:;" class="maobackvip" rel="po1">今日<span>最新</span></a></li>
+              <li id="back_2"><a href="javascript:;" class="maobackvip" rel="po2">最后<span>疯抢</span></a></li>
+              <li id="back_3"><a href="javascript:;" class="maobackvip" rel="po3">即将<span>开售</span></a></li>
+              <li onclick="topy()"><a href="javascript:;" class="v_back_top" id="back_to_top"><br /><span>TOP</span></a></li>
+            </ul>
+
+        </div>
+        <!--上方logo-->
+        <div class="logo-big">
+            <div class="logo">
+                <div class="logo-img">
+                    <a href="3"><img src="img/v_logo.png"/></a>
+                </div>
+                <div class="search">
+                    <select name="all-meun" >
+                        <option value="#">全部分类</option>
+                        <option value="#">尾品汇</option>
+                        <option value="#">图书</option>
+                        <option value="#">电子书</option>
+                        <option value="#">时尚美妆</option>
+                        <option value="#">玩具</option>
+                        <option value="#">家居日用</option>
+                    </select>
+                    <input type="text" name="" id="search-id" value="图书" />
+                    <span class="img-small"></span>
+                </div>
+                <div class="img-big"><a href="" id="a-img"></a></div>
+                <span class="hot">大家都在搜：
+                    <a href="#" name="hotword" target="_blank">初语</a>
+                    <a href="#" name="hotword" target="_blank">AMII</a>
+                    <a href="#" name="hotword" target="_blank">连衣裙</a>
+                </span>
+            </div>
+            <div class="div_float"></div>
+        </div>
+
+        <!--中间的菜单-->
+        <div class="meun_centr">
+            <div class="meun_centr-big">
+                <div class="centr-left">
+                    <a href="#">当当首页</a>
+                    <a href="#">尾品汇</a>
+                    <a href="#">孕婴服饰</a>
+                    <a href="#">家居日用</a>
+                    <a href="#">家具装饰</a>
+                    <a href="#">箱包皮具</a>
+                    <a href="#">手表饰品</a>
+                    <a href="#">运动户外</a>
+                    <a href="#">汽车用品</a>
+                </div>
+                <div class="centr-right">
+                    <a href="#">收藏此页</a>
+                </div>
+
+            </div>
+            <div class="div_float"></div>
+        </div>
+        <!--中间的菜单下方-->
+        <div class="meun-down">
+
+        </div>
+
+
+        <!--中间内容-->
+        <div class="content">
+            <div class="cont-cent">
+                <div class="cont-cent-left">
+                    <div class="new">
+                        <img src="img/jinrizuixin.png"/>
+                    </div>
+
+                    <div class="list" >
+                        <ul>
+                            <li class="list-li">
+                                <a href="#" target="_blank" class="a-big">
+                                    <img src="img/177030034604248_1_o.jpg">
+                                    <span class="shop_name">七匹狼全场低至2折起</span>
+                                    <span class="time">
+                                        <span overtype="1" js="true" action="countdown" type="seckill" class="time_hs" endvalue="150121600" showtype="3">
+                                            <span sec="sep">还剩    <span>3</span>天    </span>
+                                        </span>
+                                     </span>
+                                    <span class="left_shadow">
+                                        <span class="img_logo">
+                                            <img data-original="" src="img/177030034604250_1_o.jpg" style="display: block;">
+                                        </span>
+                                        <span class="shop_ad">七匹狼，中国知名品牌！</span><br />
+                                        <span class="sale"></span>
+                                    </span>
+                                    <span class="red_circle" style="display: none;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="list" >
+                        <ul>
+                            <li class="list-li">
+                                <a href="#" target="_blank" class="a-big">
+                                    <img src="img/182870031157919_1_o.jpg">
+                                    <span class="shop_name">全场低至2折起</span>
+                                    <span class="time">
+                                        <span overtype="1" js="true" action="countdown" type="seckill" class="time_hs" endvalue="150121600" showtype="3">
+                                            <span sec="sep">还剩    <span>2</span>天    </span>
+                                        </span>
+                                     </span>
+                                    <span class="left_shadow">
+                                        <span class="img_logo">
+                                            <img data-original="" src="img/182870031157922_1_o.jpg" style="display: block;">
+                                        </span>
+                                        <span class="shop_ad">喜欢自己 表现到底</span><br />
+
+                                        <span class="sale"></span>
+                                    </span>
+                                    <span class="red_circle" style="display: none;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="list" >
+                        <ul>
+                            <li class="list-li">
+                                <a href="#" target="_blank" class="a-big">
+                                    <img src="img/184840026912612_1_o.jpg">
+                                    <span class="shop_name">全场低至2折起</span>
+                                    <span class="time">
+                                        <span overtype="1" js="true" action="countdown" type="seckill" class="time_hs" endvalue="150121600" showtype="3">
+                                            <span sec="sep">还剩    <span>2</span>天    </span>
+                                        </span>
+                                     </span>
+                                    <span class="left_shadow">
+                                        <span class="img_logo">
+                                            <img data-original="" src="img/184840026912614_1_o.jpg" style="display: block;">
+                                        </span>
+                                        <span class="shop_ad">喜欢自己 表现到底</span><br />
+                                        <span class="sale">满200减120</span>
+                                    </span>
+                                    <span class="red_circle" style="display: none;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <div class="list" >
+                        <ul>
+                            <li class="list-li">
+                                <a href="#" target="_blank" class="a-big">
+                                    <img src="img/177030034604248_1_o.jpg">
+                                    <span class="shop_name">七匹狼全场低至2折起</span>
+                                    <span class="time">
+                                        <span overtype="1" js="true" action="countdown" type="seckill" class="time_hs" endvalue="150121600" showtype="3">
+                                            <span sec="sep">还剩    <span>3</span>天    </span>
+                                        </span>
+                                     </span>
+                                    <span class="left_shadow">
+                                        <span class="img_logo">
+                                            <img data-original="" src="img/177030034604250_1_o.jpg" style="display: block;">
+                                        </span>
+                                        <span class="shop_ad">七匹狼，中国知名品牌！</span><br />
+                                        <span class="sale"></span>
+                                    </span>
+                                    <span class="red_circle" style="display: none;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="list" >
+                        <ul>
+                            <li class="list-li">
+                                <a href="#" target="_blank" class="a-big">
+                                    <img src="img/182870031157919_1_o.jpg">
+                                    <span class="shop_name">全场低至2折起</span>
+                                    <span class="time">
+                                        <span overtype="1" js="true" action="countdown" type="seckill" class="time_hs" endvalue="150121600" showtype="3">
+                                            <span sec="sep">还剩    <span>2</span>天    </span>
+                                        </span>
+                                     </span>
+                                    <span class="left_shadow">
+                                        <span class="img_logo">
+                                            <img data-original="" src="img/182870031157922_1_o.jpg" style="display: block;">
+                                        </span>
+                                        <span class="shop_ad">喜欢自己 表现到底</span><br />
+
+                                        <span class="sale"></span>
+                                    </span>
+                                    <span class="red_circle" style="display: none;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="list" >
+                        <ul>
+                            <li class="list-li">
+                                <a href="#" target="_blank" class="a-big">
+                                    <img src="img/184840026912612_1_o.jpg">
+                                    <span class="shop_name">全场低至2折起</span>
+                                    <span class="time">
+                                        <span overtype="1" js="true" action="countdown" type="seckill" class="time_hs" endvalue="150121600" showtype="3">
+                                            <span sec="sep">还剩    <span>2</span>天    </span>
+                                        </span>
+                                     </span>
+                                    <span class="left_shadow">
+                                        <span class="img_logo">
+                                            <img data-original="" src="img/184840026912614_1_o.jpg" style="display: block;">
+                                        </span>
+                                        <span class="shop_ad">喜欢自己 表现到底</span><br />
+                                        <span class="sale">满200减120</span>
+                                    </span>
+                                    <span class="red_circle" style="display: none;"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                </div>
+
+
+
+                <div class="cont-cent-right">
+                    <div class="gif">
+                        <img src="img/slogan.gif.gif"/>
+                    </div>
+                    <img src="img/tushu.png"/>
+                    <img src="img/tongshutemai.jpg"/>
+                    <img src="img/tushu211_1030.jpg"/>
+                    <div class="div-right">
+                        <div class="">
+                            <img src="img/jijiangkaish (1).png"/>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="div_float"></div>
+        </div>
+
+        <!--底部-->
+        <footer>
+            <div class="footer-noe">
+                <a class="footer-noe-right" href="#">
+                    <span id="footer-img-1" class="foot-span"></span>
+                </a>
+                <a class="footer-noe-right" href="#">
+                    <span id="footer-img-2" class="foot-span"></span>
+                </a>
+                <a class="footer-noe-right" href="#">
+                    <span id="footer-img-3" class="foot-span"></span>
+                </a>
+                <a class="footer-noe-right" href="#">
+                    <span id="footer-img-4" class="foot-span"></span>
+                </a>
+            </div>
+            <div class="div_float"></div>
+        </footer>
+        <!--下方信息块-->
+        <div class="shop-wit">
+            <div class="mag">
+
+                <div class="public_footer_new">
+                    <div class="footer_sort footer_nvice">
+                        <span class="f_title">购物指南</span>
+                        <ul>
+                            <li><a name="foot_gouwu" href="#" target="_blank" class="main" rel="nofollow">购物流程</a></li>
+                            <li><a name="foot_jifen" href="#" target="_blank" rel="nofollow">发票制度</a></li>
+                            <li><a name="foot_fapiao" href="#" target="_blank" rel="nofollow">账户管理</a></li>
+                            <li><a name="foot_mydangdang" href="#" target="_blank" rel="nofollow">会员优惠</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_sort footer_pay">
+                        <span class="f_title">支付方式</span>
+                        <ul>
+                            <li><a name="foot_tuihuanhuoliucheng" href="#" target="_blank" rel="nofollow">货到付款</a></li>
+                            <li><a name="foot_tuihuanhuo" href="#" target="_blank" rel="nofollow">网上支付</a></li>
+                            <li><a name="foot_huanhuo" href="#" target="_blank" rel="nofollow">礼品卡支付</a></li>
+                            <li><a name="foot_tuihuo" href="#" target="_blank" rel="nofollow">银行转帐</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_sort footer_characteristic">
+                        <span class="f_title">订单服务</span>
+                        <ul>
+                            <li><a name="foot_jifen" href="#" target="_blank" class="main" rel="nofollow">订单配送查询</a></li>
+                            <li><a name="foot_lipinka" href="#" target="_blank" rel="nofollow">订单状态说明</a></li>
+                            <li><a name="foot_ershoushu" href="#r" target="_blank" rel="nofollow">自助取消订单</a></li>
+                            <li><a name="foot_shouji" href="#" target="_blank" rel="nofollow">自助修改订单</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_sort footer_distribution">
+                        <span class="f_title">配送方式</span>
+                        <ul>
+                            <li><a name="foot_huodaofukuan" href="#" target="_blank" class="main" rel="nofollow">配送范围及免邮标准</a></li>
+                            <li><a name="foot_yinhangzhuanzhang" href="#" target="_blank" class="main" rel="nofollow">当日递/次日达</a></li>
+                            <li><a name="foot_dangdanglijuan" href="#" target="_blank" rel="nofollow">订单自提</a></li>
+                            <li><a name="foot_dangdanglijuan" href="#" target="_blank" rel="nofollow">验货与签收</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_sort footer_help">
+                        <span class="f_title">退换货</span>
+                        <ul>
+                            <li><a name="foot_faq" href="#" target="_blank" rel="nofollow">退换货政策</a></li>
+                            <li><a name="foot_zhaohuimima" href="#" target="_blank" rel="nofollow">自助申请退换货</a></li>
+                            <li><a name="foot_huikuandan" href="#" target="_blank" rel="nofollow">退换货进度查询</a></li>
+                            <li><a name="foot_tuiding" href="#" target="_blank" rel="nofollow">退款方式和时间</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_sort footer_shangjia">
+                        <span class="f_title">商家服务</span>
+                        <ul>
+
+                            <li><a name="foot_zhaohuimima" href="#" target="_blank" rel="nofollow">商家中心</a></li>
+                            <li><a name="foot_huikuandan" href="#" target="_blank" rel="nofollow">运营服务</a></li>
+                            <li><a name="foot_tuiding" href="#" target="_blank" rel="nofollow">加入尾品汇</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+            <div class="div_float"></div>
+        </div>
+
+
+
+        <!--最底部-->
+        <div class="footer-down">
+            <!--<div class="down">-->
+                <div class="footer_nav_box">
+                    <div class="footer_nav">
+                        <a href="#" target="_blank" rel="nofollow">公司简介</a>
+                        <span class="sep">|</span>
+                        <a href="#" target="_blank">Investor Relations</a>
+                        <span class="sep">|</span>
+                        <a href="#" target="_blank">诚聘英才</a>
+                        <span class="sep">|</span>
+                        <a href="#" target="_blank">网站联盟</a>
+                        <span class="sep">|</span>
+                        <a href="#" target="_blank">当当招商</a>
+                        <span class="sep">|</span>
+                        <a href="#" target="_blank" rel="nofollow">机构销售</a>
+                        <span class="sep">|</span>
+                        <a href="#" target="_blank">手机当当</a>
+                        <span class="sep">|</span>
+                        <a href="#" target="_blank">官方    Blog</a>
+                        <span class="sep">|</span>
+                        <a href="#" target="_blank" >热词搜索</a>
+                    </div>
+
+                    <div class="footer_copyright">
+                        <span>Copyright (C) 当当网 2004-2017, All Rights Reserved</span>
+                        <a href="#" target="_blank" class="footer_img" rel="nofollow"><img src="img/validate.gif" target="_blank" rel="nofollow">京ICP证041189号</a>
+                        <span>出版物经营许可证 新出发京批字第直0673号</span>
+                    </div>
+
+                </div>
+
+
+            <!--</div>-->
+            <div class="div_float"></div>
+
+        </div>
+
+
+        <script type="text/javascript">
+            //返回顶部
+        function topy(){
+            document.body.scrollTop=0;
+        }
+        </script>
+
+    </body>
+</html>

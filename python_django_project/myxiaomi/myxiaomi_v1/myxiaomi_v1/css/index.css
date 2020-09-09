@@ -1,0 +1,448 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+.warp{
+    width:100%;
+    /* 有父子关系的margin,防止外边距合并*/
+    overflow: hidden;
+    /*设置透明度*/
+    /*background-color:rgba(245,245,245,,0.98);*/
+}
+
+ul>li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.topBar{
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    background-color: black;
+}
+
+.topBar a{
+    color: #b0b0b0; /*字体颜色*/
+}
+
+.topBar .sep{
+    color: #424242;
+    margin: 0 2px;  /*外边距*/
+}
+
+.container1{
+    width: 1225px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.topBar-nav{
+    float: left;
+}
+
+.topBar-cart, .topBar-message{
+    float: right;
+}
+
+.topBar-cart .icon{
+    /*给购物车添加背景图片*/
+    background-color: url("../img/shop1.png") 3px 24px;
+    width: 35px;
+    height: 22px;
+    display: inline-block;
+    /*行内块元素 同时具有行内和块级元素，和其他元素在一行，距离都可以设置*/
+    position: relative;
+    top: 6px;
+}
+
+.topBar-cart a {
+    /*display: block; !*块级元素，每个块级元素都懂新的一行开始，距离都可以设置*！*/
+    margin-left: 15px;
+    padding: 0 15px;
+}
+
+.topBar-cart a:hover{
+    background-color: white;
+    color: rgba(255,103,0,0.98);
+}
+
+.header{
+    height: 100px;
+    line-height: 100px;
+    overflow: hidden;
+}
+
+.container2{
+    width: 1225px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.header-logo,.header-nav{
+    float: left;
+    height: 100px;
+}
+
+.header-logo .logo{
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.header-search{
+    float: right;
+    position: relative;
+}
+
+.header-nav ul li{
+    float: left;
+    margin: 0 auto;
+    padding: 0 10px;
+    color: #000000;
+}
+
+.header-nav ul li a{
+    color: #333;
+    font-size: 16px;
+}
+
+.header-nav ul li a:hover{
+    color: rgba(255,103,0,0.98);
+}
+
+.header-search input[type="text"]{
+    height: 44px;
+    width: 243px;
+    border: 1px solid #e0e0e0;
+    margin-right: -1px;
+}
+
+.header-search input[type="text"]:hover{
+    border: 1px solid #b0b0b0;
+}
+
+.header-search input[type="text"]:focus{
+    /*获取焦点时的样式*/
+    outline: none; /*轮廓时绘制与元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用*/
+}
+
+.hot-words{
+    font-size: 12px;
+    position: absolute;
+    right: 40px;
+}
+
+.hot-words a{
+    background-color: #eee;
+    color: #757575;
+    padding: 3px 6px;
+    position: relative;
+    top: 2px;
+    right: 16px;
+}
+
+.hot-words a:hover{
+    background-color: rgba(255,103,0,0.98);
+    color: white;
+}
+
+.header-search input[type='submit']{
+    height: 45px;
+    width: 45px;
+    background: url("../img/search1.png") no-repeat 3px 6px;
+    border: 1px solid #E0E0E0);
+    position: relative;
+    top: 17px;
+    cursor: pointer;
+    left: -5px;
+}
+
+.header-search input[type="submit"]:hover{
+    background: url("../img/search2.png"); no-repeat 8px 8px;
+    background-color: rgba(255,107,0,0.98);
+}
+
+.content .con-up .up-1{
+    background-color: rgba(0,0,0,0.6);
+    width: 240px;
+    position: absolute;
+}
+
+.container3{
+    width: 1225px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.con-up ul:before, .con-up:after{
+    /*用子盒子来填充父盒子 解决浮动产生的问题*/
+    content: "";
+    height: 26px;
+    display: block;
+}
+
+.con-up ul li{
+    padding: 10px 25px;
+}
+
+.con-up ul li:hover{
+    background-color: #ff6700;
+}
+
+.con-up ul li a{
+    color: white;
+}
+
+.con-up ul li span{
+    float: right;
+    color: white;
+}
+
+.con-down{
+    overflow: hidden;
+    padding-top: 10px;
+}
+
+.con-down .down-1{
+    width: 240px;
+    overflow: hidden;
+    background-color: #665e57;
+    float: left;
+}
+
+.con-down ul{
+    overflow: hidden;
+}
+
+.con-down .down-1 ul li{
+    float: left;
+    width: 78px;
+    height: 83px;
+    border: 1px solid #665e57;
+    text-align: center;
+}
+
+.down-1 ul li p{
+    color: #b0b0b0;
+    position: relative;
+    font-size: 15px;
+}
+
+.down-1 ul li p:hover{
+    color: white;
+}
+
+.down-1 .p-1{
+    background: url("../img/tubiao.png") no-repeat center;
+    background-size: 50px; height: 60px;
+}
+
+.down-1 .p-2{
+    background: url("../img/tubiao.png") no-repeat center;
+    background-size: 50px; height: 60px;
+}
+
+.down-1 .p-3{
+    background: url("../img/tubiao.png") no-repeat center;
+    background-size: 50px; height: 60px;
+}
+
+.down-1 .p-4{
+    background: url("../img/tubiao.png") no-repeat center;
+    background-size: 50px; height: 60px;
+}
+
+.down-1 .p-5{
+    background: url("../img/tubiao.png") no-repeat center;
+    background-size: 50px; height: 60px;
+}
+
+.down-1 .p-6{
+    background: url("../img/tubiao.png") no-repeat center;
+    background-size: 50px; height: 60px;
+}
+
+.con-down .down-2{
+    float: left;
+}
+
+.con-down .down-2 ul li{
+    float: left;
+}
+
+.down-2 img{
+    width: 315px;
+    height: 170px;
+    margin-right: 13px;
+}
+
+.down-2 img:hover{
+    box-shadow: 0 5px 1px #b0b0b0;  /*box-shadow 向框添加一个或者多个阴影*/
+}
+
+.shop1{
+    height: 58px;
+    line-height: 58px;
+    font-size: 22px;
+    color: #333333;
+}
+
+.shop1 .left .right:hover{
+    color: white;
+}
+
+.container4{
+    width: 1225px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.shop1 .left{
+    float: left;
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: 200;
+    line-height: 58px;
+    color: #000000;
+}
+
+.shop1 .right{
+    float: right;
+    margin-top: 15px;
+}
+
+.shop2{
+    margin: 0 auto;
+    width: 1240px;
+    height: 339px;
+    padding-top: 39px;
+    border-top-width: 1px;
+    color: #e53935;
+}
+
+.container5{
+    width: 1225px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.shop2 ul li{
+    float: left;
+    width: 234px;
+    margin-right: 11px;
+    color: #333;
+}
+
+.shop2 ul li a{
+    color: #000000;
+    font-size: 100%;
+}
+
+.back-top{
+    position: fixed;
+    right: 0;
+    top: 400px;
+    background-color: white;
+}
+
+.back-top ul li{
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid @E0E0E0 ;
+}
+
+.back-top ul li:hover{
+    color: #757575;
+    cursor: pointer;
+}
+
+.back-top ul li p{
+    text-align: center;
+    padding-top: 5px;
+}
+
+.back-top .fixed-1{
+    background: url("../img/fixed.png") no-repeat center;
+    background-size: 30px;
+    height: 30px;
+}
+
+.back-top .fixed-2{
+    background: url("../img/erji.png") no-repeat center;
+}
+
+.back-top .fixed-3{
+    background: url("../img/shopping_cart.png") no-repeat center;
+}
+
+.back-top .fixed-4{
+    background: url("../img/back_top.png") no-repeat center;
+    background-size: 30px;
+    height: 30px;
+}
+
+.footer{
+    padding: 30px 0;
+    font-size: 12px;
+    background-color: #fafafa;
+}
+
+.container6{
+    width: 1225px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.footer-logo a{
+    margin-right: 10px;
+    float: left;
+    width: 57px;
+    height: 57px;
+}
+
+.footer-one .footer-two .footer-two{
+    float: left;
+}
+
+.footer-photo{
+    float: right;
+}
+
+.footer-photo ul li{
+    float: right;
+    width: 83;
+    height: 28px;
+    margin-left: 0px;
+    color: #333;
+}
+
+.footer-photo ul li a{
+    color: #000000;
+    font-size: 100%;
+}
+
+.footer-photo ul li a:hover{
+    color:orange;
+}
+
+.footer p{
+    padding: 30px 0;
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+    background: #fff;
+    font-family: "楷体";
+    min-width: 1226px;
+}
+
+
+
+
+
+
+

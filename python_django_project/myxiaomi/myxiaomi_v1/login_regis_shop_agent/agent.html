@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理页面</title>
+    <style type="text/css">
+        /*顶部菜单*/
+        .pag-head{
+            position: fixed;
+            z-index: 7;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 48px;
+            width: 100%;
+            background: #005EA7;
+        }
+        .meun_top{
+            height: 48px;
+            line-height: 48px;
+            width: 960px;
+            margin: 0 auto;
+        }
+        /*顶部菜单组*/
+        .meuns_top{
+            text-decoration: none;
+            color: white;
+            padding: 0px 10px 0px 10px;
+            display: inline-block;
+        }
+        .meuns_top:hover{
+            background-color: rgba(64,119,203,0.6);
+        }
+        .clear_div{
+            clear: both;
+        }
+        /*顶部菜单结束*/
+
+        /*下方大框*/
+        .pag-cent{
+            margin-top: 50px;
+        }
+
+        /*左侧菜单*/
+        .left-meun{
+            z-index: 8;
+            position: fixed;
+            top: 50px;
+            left: 55px;
+        }
+
+        .meuns{
+            background-color: #005EA7;
+            height: 45px;
+            width: 150px;
+            color: white;
+            line-height: 45px;
+            text-align: center;
+        }
+
+        .meuns:hover{
+            background-color: rgba(64,119,203,0.6);
+        }
+        .hide{
+            display: none;
+        }
+        .content{
+            margin-left: 65%;
+        }
+        .item{
+            width: 150px;
+        }
+
+        /*左侧菜单结束*/
+
+        /*下方右边内容块*/
+        .big-content{
+            height: 1000px;
+            border: 1px solid green;
+        }
+        .content_right{
+            margin: 0 auto;
+            height: 800px;
+            width: 960px;
+            border: 1px solid blueviolet;
+        }
+
+        .hosts{
+            margin-left: 30px;
+            margin-top: 20px;
+        }
+        table{
+            border-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        /*遮罩层*/
+        .c1{
+            position: fixed;
+            z-index: 9;
+            /*打开多层样式 fixed模式 定义层级为9 */
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            /*上面表示全覆盖*/
+            background-color: black;
+            /*上面为背景色 为黑 下面为透明度为50%*/
+            opacity: 0.5;
+        }
+
+        .c2{
+            position: fixed;
+            z-index: 10;
+            /*打开多层样式 fiexed模式 定义层级为10 */
+            width: 400px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -150px;
+            background-color: white;
+        }
+        .z-z{
+            width: 230px;
+            height: 120px;
+            margin-top: 90px;
+            margin-left: 90px;
+        }
+        hr{
+            width: 230px;
+        }
+
+        #cre{
+            margin-left: 70px;
+        }
+
+        .heds{
+            /*默认不显示*/
+            display: none;
+        }
+
+        /* 下方右边内容块结束*/
+
+        /*返回顶部*/
+        .pa-top{
+            width: 100px;
+            height: 200px;
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            background-image: url("img/top.png");
+            background-position: -425px -270px;
+        }
+
+    </style>
+</head>
+<body style="margin: 0">
+    <!--顶部菜单-->
+    <div class="pag-head">
+        <div class="meun_top">
+            <a href="" class="meuns_top">顶部菜单一</a>
+            <a href="" class="meuns_top">顶部菜单二</a>
+            <a href="" class="meuns_top">顶部菜单三</a>
+            <a href="" class="meuns_top">顶部菜单四</a>
+            <a href="" class="meuns_top">顶部菜单五</a>
+            <a href="" class="meuns_top">顶部菜单六</a>
+
+        </div>
+        <div class="clear_div">
+        </div>
+    </div>
+
+    <!--下方大框-->
+    <div class="pag-cent">
+        <!--左边菜单-->
+        <div class="left-meun">
+            <div class="item">
+                <div id="i1" onclick="changemenu('i1')" class="meuns">菜单1</div>
+                <div class="content">
+                    <div>内容1</div>
+                    <div>内容1</div>
+                    <div>内容1</div>
+                    <div>内容1</div>
+                    <div>内容1</div>
+                </div>
+            </div>
+            <div class="item">
+                <div id="i2" onclick="changemenu('i2')" class="meuns">菜单2</div>
+                <div class="content hide">
+                    <div>内容2</div>
+                    <div>内容2</div>
+                    <div>内容2</div>
+                    <div>内容2</div>
+                </div>
+            </div>
+            <div class="item">
+                <div id="i3" onclick="changemenu('i3')" class="meuns">菜单3</div>
+                <div class="content hide">
+                    <div>内容2</div>
+                    <div>内容2</div>
+                    <div>内容2</div>
+                    <div>内容2</div>
+                </div>
+            </div>
+            <div class="item">
+                <div id="i4" onclick="changemenu('i4')" class="meuns">菜单3</div>
+                <div class="content hide">
+                    <div>内容2</div>
+                    <div>内容2</div>
+                    <div>内容2</div>
+                    <div>内容2</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--右边内容-->
+        <div class="big-content">
+            <div class="content_right">
+                <div class="hosts">
+                    <input type="button" value="添加" onclick="showmod()">
+                    <input type="button" value="全选" onclick="Chooseall()">
+                    <input type="button" value="取消" onclick="cancleall()">
+                    <input type="button" value="返选" onclick="Reverseall()">
+
+                    <table border="1" id="tab">
+                        <thead>
+                            <tr>
+                                <th>选择</th>
+                                <th>主机</th>
+                                <th>端口</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tb">
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>10.10.12.1</td>
+                                <td>1000</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>10.10.12.2</td>
+                                <td>1002</td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>10.10.12.3</td>
+                                <td>1003</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--遮罩层-->
+            <div class="c1 heds" id="z-cent">
+            </div>
+            <!--对话框-->
+            <div class="c2 heds" id="z-first">
+                <div class="z-z">
+                    <lable>主机：</lable>
+                    <input type="text" id="users"><br /><br />
+                    <lable>IP：</lable>
+                    <input type="text" id="ip_add"><br />
+                    <hr />
+                    <input type="button" name="" id="cre" onclick="cresc()" value="确定" >
+                    <input type="button" onclick="hidemod()" value="关闭">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="pa-top" onclick="topy();"></div>
+
+
+    <script type="text/javascript">
+        //左侧菜单js 点击函数
+        function changemenu(id) {
+            var curr_heaher=document.getElementById(id) //获取当前的元素对象
+            var itme_list=curr_heaher.parentElement.parentElement.children; //获取当前的上上级的所有子元素
+            for (var i=0;i<itme_list.length;i++){
+                var curr_list=itme_list[i];
+                curr_list.children[1].classList.add('hide') //加上关闭
+            }
+            curr_heaher.nextElementSibling.classList.remove('hide') //移除关闭
+        }
+        //返回顶部
+        function topy() {
+            document.body.scrollTop=0;
+        }
+        
+        //显示对话框
+        function showmod() {
+            document.getElementById('z-cent').classList.remove('heds'); //移除类名 样式
+            document.getElementById('z-first').classList.remove('heds')
+        }
+        
+        //关闭对话框
+        function hidemod() {
+            document.getElementById('z-cent').classList.add('heds'); //移除类名 样式
+            document.getElementById('z-first').classList.add('heds')
+        }
+        //添加主机 ip
+        function cresc() {
+            var tab=document.getElementById('tab');
+            var user=document.getElementById('users').value
+            var ip=document.getElementById('ip_add').value
+            var tradd=tab.insertRow(4)
+            tradd.style.background='green'
+            if (user=='' || ip==''){
+                alert('主机或者用户名不能为空')
+                return 0
+            }
+            tradd.innerHTML='<td><input type="checkbox"></td> <td>'+user+'</td> <td>'+ip+'</td>'
+            hidemod()
+        }
+        //全选
+        function Chooseall() {
+            var tbody=document.getElementById('tb');
+            var tr_list=tbody.children; //取所有子元素的列表
+            for (var i=0;i<tr_list.length;i++){
+                var curr=tr_list[i]; //取当前子元素的子元素列表
+                var checkbox=curr.children[0].children[0];
+                checkbox.checked=true //打上勾
+            }
+        }
+
+        //取消
+        function cancleall() {
+            var tbody = document.getElementById('tb');
+            var tr_list = tbody.children; //取所有子元素的列表
+            for (var i=0;i<tr_list.length;i++){
+                var curr = tr_list[i]; //取当前子元素的子元素列表
+                var checkbox = curr.children[0].children[0];
+                checkbox.checked = false; //取消勾
+            }
+        }
+
+        //反选
+        function Reverseall() {
+            var tbody = document.getElementById('tb')
+            var tr_list = tbody.children; //取所有子元素的列表
+            for (var i=0;i<tr_list.length;i++){
+                var curr = tr_list[i]; //取当前子元素的子元素列表
+                var checkbox = curr.children[0].children[0];
+                if (checkbox.checked){
+                    checkbox.checked = false; //取消勾
+                }else {
+                    checkbox.checked = true; //打上勾
+                }
+            }
+
+        }
+    </script>
+
+
+</body>
+</html>
