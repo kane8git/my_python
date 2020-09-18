@@ -219,7 +219,7 @@ GLOBAL_CHAT_RECORD_DIC = {
     }
 
     //  信息 展示到windows中
-    function AddSentMsgIntoBox(msg_text,msg_type){
+    function AddSentMsgIntoBox(msg_text, msg_type){
         if(msg_type == 'text'){
             var new_msg_ele = "<div class='msg-item'>" +
                     "<span>" + "{{ request.user.userprofile.name }}"  + "</span>" +
